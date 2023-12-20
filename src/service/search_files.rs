@@ -1,6 +1,6 @@
 use std::{ffi::OsStr, path::PathBuf};
 use walkdir::WalkDir;
-use crate::commands::config::Configurations;
+use crate::config::Configurations;
 
 // @在目錄內搜尋需要爬找說明文字的方法@
 pub fn search_files(root: &PathBuf, config: &Configurations) -> Vec<PathBuf> {

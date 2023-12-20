@@ -1,26 +1,23 @@
 // @用來分模組的@
-pub mod shared {
+pub mod common {
     pub mod utils;
 }
 
-pub mod commands {
-    pub mod cli;
-    pub use cli::Cli;
-    pub mod config;
-    pub use config::Configurations;
-}
+pub mod cli;
+pub use cli::Cli;
+pub mod config;
+pub use config::Configurations;
 
-pub mod core {
+pub mod service {
     pub mod xlsx_service;
     pub mod search_files;
-
     pub use search_files::search_files;
     pub mod extract_describe_text;
     pub use extract_describe_text::extract_describe_text;
 
     use self::xlsx_service::{CodeDescription, XlsxService};
 
-    pub fn start(config: crate::commands::config::Configurations) {
+    pub fn start(config: crate::config::Configurations) {
         let current_dir = config.path.clone();
         
         let files = search_files::search_files(&config.path.clone(), &config);
@@ -37,7 +34,7 @@ pub mod core {
                 }
             );
             
-            crate::shared::utils::display_progress(idx, files.len());
+            crate::common::utils::display_progress(idx, files.len());
         });
         println!("");
 
