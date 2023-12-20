@@ -30,10 +30,10 @@ pub struct Cli {
     pub extentions: String,
 
     #[clap(
-        short = 's',
+        short = 'o',
         long, 
         help = "Output the result to a file")]
-        pub output: Option<PathBuf>
+    pub output: Option<PathBuf>
 }
 
 impl Cli {

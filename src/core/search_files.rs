@@ -3,7 +3,7 @@ use walkdir::WalkDir;
 use crate::commands::config::Configurations;
 
 // @在目錄內搜尋需要爬找說明文字的方法@
-pub fn search_files(root: &PathBuf, config: Configurations) -> Vec<PathBuf> {
+pub fn search_files(root: &PathBuf, config: &Configurations) -> Vec<PathBuf> {
     let mut files: Vec<PathBuf> = Vec::new();
     
     let depth: usize = if config.recursive { ::std::usize::MAX } else { 1 };
