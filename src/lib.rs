@@ -11,6 +11,8 @@ pub use config::Configurations;
 pub mod service {
     pub mod xlsx_service;
     pub mod search_files;
+    use std::thread::sleep;
+
     pub use search_files::search_files;
     pub mod extract_describe_text;
     pub use extract_describe_text::extract_describe_text;
@@ -35,6 +37,7 @@ pub mod service {
             );
             
             crate::common::utils::display_progress(idx, files.len());
+            sleep(std::time::Duration::from_millis(200));
         });
         println!("");
 
