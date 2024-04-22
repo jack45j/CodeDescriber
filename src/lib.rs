@@ -37,8 +37,7 @@ pub mod service {
             crate::common::utils::display_progress(idx, files.len());
         });
         println!("");
-
-
+        println!("Found {} files.", &files.len());
 
         let output_path = &config.output.unwrap_or(current_dir).join("result.xlsx");
         match xlsx_service.export(output_path.into()) {
